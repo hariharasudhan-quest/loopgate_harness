@@ -27,7 +27,8 @@
 
 ## Changelog
 
-- 0001-opencode iteration 2/2: reconciled `docs/plan.md` with the implementation and `docs/specs/hangman.md`.
+- 0001-opencode iteration 2/2: reconciled `docs/plan.md` with the implementation and `docs/specs/hangman.md`; gate is green.
+- Commit: `2a910f0`; pushed to fork branch `0001-opencode-hangman-2-2` because origin is read-only.
 - 0001-opencode iteration 1/2: implemented the Hangman game end-to-end; gate is green.
 - Commit: `19a3c6e`; pushed to fork branch `0001-opencode-hangman-1-2` because origin is read-only.
 
