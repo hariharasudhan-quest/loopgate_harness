@@ -4,35 +4,31 @@
 
 ## Current Focus
 
-- Active spec + milestone: <e.g. docs/specs/base.md → Milestone 2>
+- Active spec: `docs/specs/hangman.md` — terminal Hangman game.
+- Milestones 1 and 2 are both complete.
 
 ## Current State
 
-- <current repo state>
-- <current state of each feature described in plan.md>
-- <current state of functionalities described in plan.md>
-- <current remaining gap of repo and what is described in plan.md>
+- `src/game_state.py`: pure `GameState` class with `secrets.choice` word selection, private state, and public methods/properties.
+- `src/game_cli.py`: `GameCLI` class driving the terminal loop over `sys.stdin`/`sys.stdout` with ANSI screen clearing and a `HANGMAN_WORD` env hook for deterministic tests.
+- `tests/test_game_state.py` and `tests/test_game_cli.py`: full behavioral coverage including win/loss, invalid/duplicate input, EOF, screen clearing, and the module entry point.
+- All source files reach 100% coverage.
 
 ## Checks
 
-- `harness preflight` <status>
-- `harness gate` <status>
-- <another-check-to-use>
-- <another-check-to-use>
+- `harness preflight`: green
+- `harness gate`: green
+- `pytest --cov --cov-fail-under=100`: 200 passed, 100% coverage
 
 ## Next
 
-1. <next concrete action>
-2. <next concrete action>
-3. <next concrete action>
+1. Human review of the `HANGMAN_WORD` env hook and public-attribute compromise in `GameState`.
+2. Decide whether to keep `docs/plan.md` modifications from a previous iteration or revert them.
 
 ## Changelog
 
-- <what a previous iteration tried, and enduring changes or failures (with the error/check) example>
--  <what THIS iteration tried, and whether it worked or failures (with the error/check) example>
+- 0001-opencode iteration 1/2: implemented the Hangman game end-to-end; gate is green.
 
 ## Blockers
 
-- <known blocker, or None known>
-- <known blocker, or None known>
-- <known blocker, or None known>
+- None known.
