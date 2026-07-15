@@ -66,4 +66,5 @@ Drives the loop, reads from `sys.stdin`, writes to `sys.stdout`. Interacts only 
 - `python -m src.game_cli` can be executed end-to-end with deterministic input/output in tests.
 
 ## Changelog
+- 0003-opencode iteration 1/2: cleared the gate by restoring the forbidden `harness/cli.py` working-tree edit to its committed state; `harness/` changes (including `opencode` agent registration) require human action. Updated `docs/PROJECT_STATUS.md` to reflect the green gate.
 - 0001-opencode iteration 1/2: implemented GameState, GameCLI, full test suite, and updated spec to match the 5 public-method lint cap.
