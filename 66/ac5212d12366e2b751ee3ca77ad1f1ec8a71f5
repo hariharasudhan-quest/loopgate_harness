@@ -1,0 +1,27 @@
+docs/specs/hangman.md
+  s_3279b58388325b::t_56c1dac917ed6e 69
+  s_3279b58388325b::t_6ccfaf681f4beb 55
+tests/test_game_cli.py
+  s_3279b58388325b::t_5a6732544def44 203-204,211,225
+  s_3279b58388325b::t_8d67fba82e2498 205-210,212-224,226-256
+docs/PROJECT_STATUS.md
+  s_3279b58388325b::t_ca4733aaa15a9e 20-21
+  s_3279b58388325b::t_3f041a4227516a 31
+  s_3279b58388325b::t_0f1e6856899a2c 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "66ac5212d12366e2b751ee3ca77ad1f1ec8a71f5",
+  "prompts": {},
+  "sessions": {
+    "s_3279b58388325b": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_09bb72b26ffeuo2azQJKOH9aGK",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "hariharasudhan-quest <harihara.sudhan@quest1.io>"
+    }
+  }
+}
