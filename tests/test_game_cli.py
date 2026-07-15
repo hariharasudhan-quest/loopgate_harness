@@ -200,3 +200,57 @@ def test_default_state_without_env_word(monkeypatch: pytest.MonkeyPatch) -> None
 
     assert exit_code == 0
     assert "You win!" in stdout.getvalue()
+
+
+def test_uppercase_guess_is_accepted_by_cli() -> None:
+    """The CLI normalizes an uppercase guess to lowercase and accepts it."""
+    stdin = StringIO("A\n")
+    stdout = StringIO()
+    state = GameState(word="a")
+    cli = GameCLI(stdin=stdin, stdout=stdout, state=state)
+
+    exit_code = cli.run()
+
+    assert exit_code == 0
+    assert "Word: a" in stdout.getvalue()
+    assert "You win!" in stdout.getvalue()
+
+
+def test_non_ascii_guess_is_reprompted_by_cli() -> None:
+    """A non-ASCII guess is rejected by the CLI and the loop continues."""
+    stdin = StringIO("é\na\n")
+    stdout = StringIO()
+    state = GameState(word="a")
+    cli = GameCLI(stdin=stdin, stdout=stdout, state=state)
+
+    exit_code = cli.run()
+
+    assert exit_code == 0
+    output = stdout.getvalue()
+    assert "Invalid or already guessed. Try again." in output
+    assert "You win!" in output
+
+
+def test_winning_game_renders_exact_output() -> None:
+    """A complete winning game produces the expected rendered screen sequence."""
+    stdin = StringIO("a\n")
+    stdout = StringIO()
+    state = GameState(word="a")
+    cli = GameCLI(stdin=stdin, stdout=stdout, state=state)
+
+    exit_code = cli.run()
+
+    assert exit_code == 0
+    expected = (
+        "\033[2J\033[H"
+        "Word: _\n"
+        "Guessed: \n"
+        "Attempts remaining: 6\n"
+        "Guess a letter: "
+        "\033[2J\033[H"
+        "Word: a\n"
+        "Guessed: a\n"
+        "Attempts remaining: 6\n"
+        "You win!\n"
+    )
+    assert stdout.getvalue() == expected

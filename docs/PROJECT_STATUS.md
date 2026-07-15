@@ -11,14 +11,14 @@
 
 - `src/game_state.py`: pure `GameState` class with `secrets.choice` word selection, private state, and public methods/properties.
 - `src/game_cli.py`: `GameCLI` class driving the terminal loop over `sys.stdin`/`sys.stdout` with ANSI screen clearing and a `HANGMAN_WORD` env hook for deterministic tests.
-- `tests/test_game_state.py` and `tests/test_game_cli.py`: 30 behavioral tests covering win/loss, invalid/duplicate/non-ASCII input, EOF, whitespace handling, screen clearing, and the module entry point.
+- `tests/test_game_state.py` and `tests/test_game_cli.py`: 33 behavioral tests covering win/loss, invalid/duplicate/non-ASCII input, EOF, whitespace handling, screen clearing, the module entry point, uppercase guesses, and exact rendered output.
 - All hangman source files reach 100% coverage.
 
 ## Checks
 
 - `harness preflight`: green (hangman source passes lint/format/complexipy)
-- `harness gate`: green (204/204 tests, 100% coverage)
-- Hangman tests: `pytest tests/` passes (30/30)
+- `harness gate`: green (207/207 tests, 100% coverage)
+- Hangman tests: `pytest tests/` passes (33/33)
 
 ## Next
 
@@ -28,6 +28,7 @@
 
 ## Changelog
 
+- 0003-opencode iteration 2/2: added durable CLI behavior tests for uppercase guesses, non-ASCII input rejection, and exact rendered output. Gate is green (207/207 tests, 100% coverage).
 - 0003-opencode iteration 1/2: restored `harness/cli.py` to the committed state to clear the gate. The uncommitted `opencode` agent entry broke `harness/tests/test_cli.py` expectations and dropped coverage below 100 because `harness/` is a forbidden path for agents. Updated `docs/PROJECT_STATUS.md` to reflect a green gate and the pending human re-add of the `opencode` agent.
 - 0002-opencode iteration 2/2: added edge-case tests for non-ASCII guesses, uppercase-word normalization, whitespace-padded input, and EOF after invalid input. Recovered onto `main` after the harness created a stray `new_branch_oak`. `harness gate` still blocked by `harness/` forbidden-path changes.
 - 0002-opencode iteration 1/2: verified Hangman implementation is complete; gate is blocked by pre-existing `harness/` changes. Updated `docs/PROJECT_STATUS.md` to current truth.

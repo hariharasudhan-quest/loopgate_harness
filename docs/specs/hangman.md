@@ -52,7 +52,7 @@ Drives the loop, reads from `sys.stdin`, writes to `sys.stdout`. Interacts only 
 
 ## 5. Code Quality & Testing
 - Comprehensive unit tests in `tests/test_game_state.py` and `tests/test_game_cli.py`.
-- Tests cover winning, losing, correct/incorrect/duplicate guesses, invalid input, empty input, screen clearing, and the default entry point.
+- Tests cover winning, losing, correct/incorrect/duplicate guesses, invalid input, empty input, screen clearing, the default entry point, uppercase guesses, non-ASCII input, and exact rendered output.
 - 100% coverage for `src/game_state.py` and `src/game_cli.py`.
 - Pass Pyright strict, Ruff, Pylint, Complexipy, and Semgrep checks with the 110-character line-length limit.
 
@@ -66,5 +66,6 @@ Drives the loop, reads from `sys.stdin`, writes to `sys.stdout`. Interacts only 
 - `python -m src.game_cli` can be executed end-to-end with deterministic input/output in tests.
 
 ## Changelog
+- 0003-opencode iteration 2/2: strengthened `tests/test_game_cli.py` with end-to-end tests for uppercase guesses, non-ASCII input handling, and exact rendered output. Gate remains green with 207 tests.
 - 0003-opencode iteration 1/2: cleared the gate by restoring the forbidden `harness/cli.py` working-tree edit to its committed state; `harness/` changes (including `opencode` agent registration) require human action. Updated `docs/PROJECT_STATUS.md` to reflect the green gate.
 - 0001-opencode iteration 1/2: implemented GameState, GameCLI, full test suite, and updated spec to match the 5 public-method lint cap.
