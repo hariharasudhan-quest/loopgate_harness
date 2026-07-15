@@ -1,0 +1,26 @@
+tests/test_game_state.py
+  s_64b1d92b6f9c78::t_0a517ced3a4f89 71-79
+  s_64b1d92b6f9c78::t_b9066505015d67 19-26
+docs/PROJECT_STATUS.md
+  s_64b1d92b6f9c78::t_eb7839c5b02be7 14-15
+  s_64b1d92b6f9c78::t_0271df475d2bab 31
+  s_64b1d92b6f9c78::t_2b9ef70aa0e36b 21
+tests/test_game_cli.py
+  s_64b1d92b6f9c78::t_bd0501611c0533 86-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "be40a670a5a8e076791b5dc70c0ae1378957576d",
+  "prompts": {},
+  "sessions": {
+    "s_64b1d92b6f9c78": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_09bc48ea6ffesi7EXeFSZ5Xx1x",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "hariharasudhan-quest <harihara.sudhan@quest1.io>"
+    }
+  }
+}
