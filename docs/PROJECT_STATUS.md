@@ -28,6 +28,7 @@
 ## Changelog
 
 - 0001-opencode iteration 1/2: implemented the Hangman game end-to-end; gate is green.
+- Commit: `19a3c6e`; pushed to fork branch `0001-opencode-hangman-1-2` because origin is read-only.
 
 ## Blockers
 
