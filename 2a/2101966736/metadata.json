@@ -1,0 +1,32 @@
+{
+  "cli_version": "0.8.42",
+  "checkpoint_id": "2a2101966736",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/PROJECT_STATUS.md",
+    "docs/specs/hangman.md",
+    "src/__init__.py",
+    "src/game_cli.py",
+    "src/game_state.py",
+    "tests/test_game_cli.py",
+    "tests/test_game_state.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/2a/2101966736/0/metadata.json",
+      "transcript": "/2a/2101966736/0/full.jsonl",
+      "compact_transcript": "/2a/2101966736/0/transcript.jsonl",
+      "content_hash": "/2a/2101966736/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 253989,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 5828793,
+    "output_tokens": 27989,
+    "api_call_count": 95
+  }
+}
