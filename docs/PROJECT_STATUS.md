@@ -29,6 +29,7 @@
 ## Changelog
 
 - 0003-opencode iteration 2/2: added durable CLI behavior tests for uppercase guesses, non-ASCII input rejection, and exact rendered output. Gate is green (207/207 tests, 100% coverage).
+- Commit: `66ac521`; pushed to fork branch `0003-opencode-hangman-2-2` because origin is read-only.
 - 0003-opencode iteration 1/2: restored `harness/cli.py` to the committed state to clear the gate. The uncommitted `opencode` agent entry broke `harness/tests/test_cli.py` expectations and dropped coverage below 100 because `harness/` is a forbidden path for agents. Updated `docs/PROJECT_STATUS.md` to reflect a green gate and the pending human re-add of the `opencode` agent.
 - 0002-opencode iteration 2/2: added edge-case tests for non-ASCII guesses, uppercase-word normalization, whitespace-padded input, and EOF after invalid input. Recovered onto `main` after the harness created a stray `new_branch_oak`. `harness gate` still blocked by `harness/` forbidden-path changes.
 - 0002-opencode iteration 1/2: verified Hangman implementation is complete; gate is blocked by pre-existing `harness/` changes. Updated `docs/PROJECT_STATUS.md` to current truth.
