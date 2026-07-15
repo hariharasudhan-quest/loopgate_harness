@@ -83,6 +83,32 @@ def test_eof_exits_as_loss() -> None:
     assert exit_code == 1
 
 
+def test_whitespace_around_guess_is_accepted() -> None:
+    """Leading and trailing whitespace around a guess is stripped."""
+    stdin = StringIO("  a  \n")
+    stdout = StringIO()
+    state = GameState(word="a")
+    cli = GameCLI(stdin=stdin, stdout=stdout, state=state)
+
+    exit_code = cli.run()
+
+    assert exit_code == 0
+    assert "You win!" in stdout.getvalue()
+
+
+def test_eof_after_invalid_input_exits_as_loss() -> None:
+    """An invalid guess followed by end-of-file exits with code 1."""
+    stdin = StringIO("1")
+    stdout = StringIO()
+    state = GameState(word="a")
+    cli = GameCLI(stdin=stdin, stdout=stdout, state=state)
+
+    exit_code = cli.run()
+
+    assert exit_code == 1
+    assert "Invalid or already guessed. Try again." in stdout.getvalue()
+
+
 def test_screen_is_cleared_each_turn() -> None:
     """Every rendered turn starts with the ANSI clear escape sequence."""
     stdin = StringIO("a\n")

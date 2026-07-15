@@ -16,6 +16,14 @@ def test_init_uses_provided_word() -> None:
     assert state.word_display == "_ _ _ _ _ _"
 
 
+def test_init_lowercases_provided_word() -> None:
+    """An uppercase supplied word is normalized to lowercase."""
+    state = GameState(word="PYTHON")
+    assert state.word_display == "_ _ _ _ _ _"
+    assert state.guess_letter("p") is True
+    assert state.word_display == "p _ _ _ _ _"
+
+
 def test_init_chooses_random_word_from_list(monkeypatch: pytest.MonkeyPatch) -> None:
     """When no word is supplied, secrets.choice picks from the built-in list."""
     monkeypatch.setattr(secrets, "choice", lambda _words: "lemon")
@@ -56,6 +64,15 @@ def test_invalid_inputs_are_rejected() -> None:
     assert state.guess_letter("ab") is False
     assert state.guess_letter("1") is False
     assert state.guess_letter("!") is False
+    assert state.attempts_remaining == 6
+    assert not state.guessed_letters
+
+
+def test_non_ascii_guess_is_rejected() -> None:
+    """Letters outside the ASCII range are rejected."""
+    state = GameState(word="apple")
+    assert state.guess_letter("é") is False
+    assert state.guess_letter("ñ") is False
     assert state.attempts_remaining == 6
     assert not state.guessed_letters
 
