@@ -1,66 +1,57 @@
-The human vision. Agents read this for direction; `docs/specs/` turns it into concrete, prioritized work. Humans start owning this file. Delete or comment out the `docs/plan.md` entry in `[tool.harness.gate] forbidden_files` at [pyproject.toml](../pyproject.toml) if you want agents to take over managing the vision.
+# Plan
 
-} Code will go in `src/`
+> The human vision. Agents read this for direction; `specs/` turns it into concrete, prioritized work. Humans own this file.
 
-## Objective
+## Goal
 
-Prose to describe the intended outcome, e.g. a one page web app that does X for Y users. e.g. email will always be clear of junk mail. Use affirmative phrasing in non-contradictory detail.
+Build a fully functioning, terminal-based Hangman game in Python with 100% test coverage and cleanly separated logic and rendering layers.
 
-## Features and functionality
+## Approach To Reach Goal
 
-Detail the objective outcome.
+The game is split into two distinct layers to keep the logic fully testable:
 
-EXAMPLE:
+- **Logic Layer (`src/game_state.py`)**: A `GameState` class that holds the word, guessed letters, and remaining attempts. This class must have zero terminal or I/O dependencies — pure, deterministic Python only.
+- **Presentation Layer (`src/game_cli.py`)**: A `GameCLI` class that reads from `sys.stdin` and writes to `sys.stdout`. It drives the game loop by calling into `GameState`.
 
-- User experience is like {this}
-- Data Storage {stores X like Y}
-- Cost is kept to {#}
-- Page X does Y, Page A does B
-- Links to wireframes or mockups
-- Schema contract
-- Tests to include to enforce functionality
-- Project will be deployed at {place}
-- API integrations include {A}, {B}, {C}
-- Local tasks are {X}, {Y}, {Z}
+### Allowed Libraries
 
-## Approach
+Use **only the Python standard library** for the game itself:
 
-Describe the high-level steps for completing the project. Prefer concrete direction over vague quality words. For example, describe user experience deliverables, data flows, or things the project must avoid, in the ontext of timing.
+- `secrets` — for cryptographically random word selection (avoids SAST warnings about pseudo-random generators).
+- `sys` — for `sys.stdin` / `sys.stdout` in the CLI layer.
+- `os` — for the optional `HANGMAN_WORD` environment variable used by tests to make the module entry point deterministic.
 
-EXAMPLE:
+For **tests**, `pytest` is available and is the only test dependency allowed.
 
-- User description
-- Major technical choices
-- Workflows
-- Libraries and architecture
-- Storage choices
-- APIs
-- Services
-- Data sources
-- Performanec targets
-- UX expectations
-- Compatibility requirements
+### Code Structure
 
-EXAMPLE:
+```
+src/
+  __init__.py     # Package marker so src imports work for pylint and tests
+  game_state.py   # GameState class — logic only, no I/O
+  game_cli.py     # GameCLI class — reads/writes terminal, drives game loop
+tests/
+  test_game_state.py  # Unit tests for GameState
+  test_game_cli.py    # End-to-end CLI tests
+```
 
-1. Dependencies installed: FastAPI, Numpy, Requests, Supabase
-2. FastAPI Backend working with health endponit.
-3. User can see blank homepage.
-4. API `/data` endpoint reurns user info. React/Vite homepage shows raw html.
-   ...
-   {FINAL}. The one page web app is styled like mockup and ... (This item should be a mirror of the Objective at the top)
+### Key Design Rules
+
+- `GameState` must expose: `guess_letter(char)`, `check_win()`, `check_loss()`, `word_display` (masked word), `guessed_letters` (sorted string), `attempts_remaining` (int).
+- All attributes in `GameState` that are internal implementation details must be prefixed with `_` (e.g. `_word`, `_guessed`).
+- `word_display` is computed via an `@property` decorator.
+- `guessed_letters` and `attempts_remaining` are kept as public attributes so the class stays within the 5 public-method lint cap while still exposing the required values.
+- `GameCLI` must not access `GameState._word` or any other private members. It must only call the public API.
+- Screen clearing uses an ANSI escape sequence written to `sys.stdout` instead of `os.system("clear")` to avoid subprocess-related security checks and keep the layer testable.
+- Quality: code must pass `ruff check` (linting) and `ruff format` (formatting). Line length limit is **110 characters**.
 
 ## Milestones
 
-Similar to 'Approach', with concrete deliverables in a timeline
+1. **Milestone 1**: Core game logic (`GameState`) and comprehensive unit tests for all methods.
+2. **Milestone 2**: The interactive Terminal CLI loop and `GameCLI` presentation rendering.
 
-1. First major milestone and its concrete description
-2. Second major milestone and its concrete description
-3. Third major milestone and its concrete description
-4. {fill in additional milestones}
-5. Release or handoff milestone
+## Non-goals and Constraints
 
-## Out of Scope
-
-1. {item the project will NOT do}
-2. {item the project will NOT do}
+- Do not use any external dependencies outside of the Python standard library for the game implementation.
+- No graphical interfaces — stick to plain terminal text output.
+- No curses — use `sys.stdout.write()` with an ANSI clear sequence for screen clearing.

@@ -22,11 +22,12 @@
 
 ## Next
 
-1. Human review of the `HANGMAN_WORD` env hook and public-attribute compromise in `GameState`.
-2. Decide whether to keep `docs/plan.md` modifications from a previous iteration or revert them.
+1. Human review of the `HANGMAN_WORD` env hook in `GameCLI`.
+2. Human review of the public-attribute compromise in `GameState` (kept to satisfy the 5 public-method lint cap).
 
 ## Changelog
 
+- 0001-opencode iteration 2/2: reconciled `docs/plan.md` with the implementation and `docs/specs/hangman.md`.
 - 0001-opencode iteration 1/2: implemented the Hangman game end-to-end; gate is green.
 - Commit: `19a3c6e`; pushed to fork branch `0001-opencode-hangman-1-2` because origin is read-only.
 
