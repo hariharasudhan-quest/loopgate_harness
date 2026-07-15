@@ -1,0 +1,21 @@
+docs/PROJECT_STATUS.md
+  s_d0c53b41ae7b4a::t_a6b35264f0e3f4 25-26,30
+docs/plan.md
+  s_d0c53b41ae7b4a::t_bb27b97c4ab902 20-22,24,26,28-36,38,40-46,48,50-51,53,55-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "2a910f0cb05b50de4cb43f3d06ab9a564c84308e",
+  "prompts": {},
+  "sessions": {
+    "s_d0c53b41ae7b4a": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_09bf971fdffeZujc5q7kvfUqjX",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "hariharasudhan-quest <harihara.sudhan@quest1.io>"
+    }
+  }
+}
