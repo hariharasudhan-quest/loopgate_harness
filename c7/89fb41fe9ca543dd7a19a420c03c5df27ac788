@@ -1,0 +1,19 @@
+docs/PROJECT_STATUS.md
+  s_3279b58388325b::t_96fa892cfbf80f 32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c789fb41fe9ca543dd7a19a420c03c5df27ac788",
+  "prompts": {},
+  "sessions": {
+    "s_3279b58388325b": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_09bb72b26ffeuo2azQJKOH9aGK",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "hariharasudhan-quest <harihara.sudhan@quest1.io>"
+    }
+  }
+}
