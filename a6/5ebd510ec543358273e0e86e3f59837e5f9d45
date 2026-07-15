@@ -1,0 +1,19 @@
+docs/specs/hangman.md
+  s_6873ffe372598d::t_65afd206c28580 69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a65ebd510ec543358273e0e86e3f59837e5f9d45",
+  "prompts": {},
+  "sessions": {
+    "s_6873ffe372598d": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_09bbba5a7ffehFx0KPdGPjI041",
+        "model": "kimi-k2.7-code"
+      },
+      "human_author": "hariharasudhan-quest <harihara.sudhan@quest1.io>"
+    }
+  }
+}
